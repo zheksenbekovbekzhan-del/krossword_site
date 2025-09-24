@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <title>Кроссворд – Педагогика</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; background: #f5f5f5; }
+        h1 { color: #333; }
+        table { margin: 20px auto; border-collapse: collapse; }
+        td {
+            width: 30px; height: 30px; text-align: center; border: 1px solid #ccc;
+            background: white; font-weight: bold; font-size: 16px;
+        }
+        td.empty { background: #ddd; border: none; }
+        button { margin: 5px; padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <h1>Кроссворд: Педагогикалық қызмет</h1>
+    <p>Жауапты көру үшін батырманы басыңыз</p>
+    <table id="crossword">
+        <tr>
+            <td data-answer="С"></td><td data-answer="А"></td><td data-answer="Б"></td><td data-answer="А"></td>
+            <td class="empty"></td>
+            <td data-answer="Т"></td><td data-answer="Ә"></td><td data-answer="Р"></td><td data-answer="Б"></td><td data-answer="И"></td><td data-answer="Е"></td>
+        </tr>
+        <tr>
+            <td data-answer="О"></td><td class="empty"></td><td data-answer="Л"></td><td class="empty"></td>
+            <td class="empty"></td>
+            <td data-answer="Ә"></td><td class="empty"></td><td class="empty"></td><td data-answer="Р"></td><td class="empty"></td><td class="empty"></td>
+        </tr>
+        <tr>
+            <td data-answer="Қ"></td><td data-answer="Ы"></td><td data-answer="Р"></td><td data-answer="Ы"></td>
+            <td class="empty"></td>
+            <td data-answer="Ж"></td><td data-answer="Ұ"></td><td data-answer="М"></td><td data-answer="Ы"></td><td data-answer="С"></td><td data-answer="Т"></td>
+        </tr>
+    </table>
+
+    <div>
+        <button onclick="showAnswers()">Барлық жауаптарды көрсету</button>
+        <button onclick="checkAnswers()">Жауаптарды тексеру</button>
+        <button onclick="clearAnswers()">Барлығын тазалау</button>
+    </div>
+
+    <script>
+        function showAnswers() {
+            document.querySelectorAll('#crossword td').forEach(cell => {
+                if (cell.dataset.answer) cell.textContent = cell.dataset.answer;
+            });
+        }
+        function checkAnswers() {
+            document.querySelectorAll('#crossword td').forEach(cell => {
+                if (cell.dataset.answer) {
+                    if (cell.textContent !== cell.dataset.answer) {
+                        cell.style.background = '#fdd';
+                    } else {
+                        cell.style.background = '#dfd';
+                    }
+                }
+            });
+        }
+        function clearAnswers() {
+            document.querySelectorAll('#crossword td').forEach(cell => {
+                if (cell.dataset.answer) {
+                    cell.textContent = '';
+                    cell.style.background = 'white';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
